@@ -2,7 +2,7 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: JepsonWong.github.io
+url: https://chaodongyang.github.io/
 date_format: "ordinal"
 title: 相依
 subtitle: "专注计算机底层"
