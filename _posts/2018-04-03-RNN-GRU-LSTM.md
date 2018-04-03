@@ -103,7 +103,7 @@ GRU即Gated Recurrent Unit。GRU保持了LSTM的效果同时又使结构更加�
 
 ### GRU的网络结构
 
-![](/images/posts/machine_learning/nlp/gru.png)
+![](/images/posts/machine_learning/nlp/gru2.png)
 
 而GRU模型如上图所示，相比LSTM有三个门它只有两个门了，分别为更新门和重置门，即图中的zt和rt。更新门用于控制前一时刻的状态信息被带入到当前状态中的程度，更新门的值越大说明前一时刻的状态信息带入越多。重置门用于控制忽略前一时刻的状态信息的程度，重置门的值越小说明忽略得越多。
 
