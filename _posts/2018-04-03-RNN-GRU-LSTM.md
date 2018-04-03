@@ -6,6 +6,8 @@ description: 介绍在NLP中广泛使用的一些神经网络。
 keywords: NLP, 神经网络, 机器学习
 ---
 
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
 ## RNN
 
 ### 为什么要有RNN?
