@@ -128,3 +128,7 @@ y\_t = \sigma(W\_o \cdot h\_t)
 [LSTM和GRU](https://blog.csdn.net/lreaderl/article/details/78022724)
 
 [GRU](https://blog.csdn.net/wangyangzhizhou/article/details/77332582)
+
+[LSTM](https://zybuluo.com/hanbingtao/note/581764)
+
+[LSTM超参数训练trick](https://www.jianshu.com/p/dcec3f07d3b5)
