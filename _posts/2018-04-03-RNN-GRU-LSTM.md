@@ -99,10 +99,30 @@ RNN和LSTM的网络结构的对比：
 
 ### 为什么要有GRU?
 
+GRU即Gated Recurrent Unit。GRU保持了LSTM的效果同时又使结构更加简单，所以它也非常流行。
+
 ### GRU的网络结构
+
+![](/images/posts/machine_learning/nlp/gru.png)
+
+而GRU模型如上图所示，相比LSTM有三个门它只有两个门了，分别为更新门和重置门，即图中的zt和rt。更新门用于控制前一时刻的状态信息被带入到当前状态中的程度，更新门的值越大说明前一时刻的状态信息带入越多。重置门用于控制忽略前一时刻的状态信息的程度，重置门的值越小说明忽略得越多。
+
+r\_t=\sigma(W\_r\cdot[h\_{t-1},x\_t])
+
+z\_t=\sigma(W\_z\cdot[h\_{t-1},x\_t])
+
+{\tilde{h}}\_t=\tanh(W\_{\tilde{h}} \cdot[r\_t\ast h\_{t-1},x\_t])
+
+h\_t=(1-z\_t)\ast h\_{t-1}+z\_t \ast \tilde{h}\_t
+
+y\_t = \sigma(W\_o \cdot h\_t)
 
 ## 参考
 
 [RNN](https://www.cnblogs.com/pinard/p/6509630.html)
 
 [RNN梯度下降](http://www.cnblogs.com/xweiblogs/p/5914622.html#undefined)
+
+[LSTM和GRU](https://blog.csdn.net/lreaderl/article/details/78022724)
+
+[GRU](https://blog.csdn.net/wangyangzhizhou/article/details/77332582)
