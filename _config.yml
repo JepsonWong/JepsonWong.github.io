@@ -5,7 +5,7 @@ baseurl:
 url: https://JepsonWong.github.io
 date_format: "ordinal"
 title: 相依
-subtitle: "专注计算机底层"
+subtitle: "专注计算机底层、机器学习算法"
 description: "Jepson的个人博客"
 keywords: Jepson
 timezone: Asia/BeiJing
