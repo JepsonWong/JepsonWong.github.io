@@ -43,7 +43,19 @@ The paper also experiments with two different channels in the form of static and
 * l2正则化效益很小，相比而言，dropout在神经网络中有着广泛的使用和很好的效果，dropout一般设为0.5
 * 激活函数的话，目前广泛应用的是ReLU、tanh函数。
 
+[textcnn源码1](https://github.com/dennybritz/cnn-text-classification-tf)
+
+[textcnn源码2](https://github.com/yoonkim/CNN_sentence)
+
+[Implementing a CNN for Text Classification in TensorFlow](http://www.wildml.com/2015/12/implementing-a-cnn-for-text-classification-in-tensorflow/)
+
 [CNN用于句子分类时的超参数分析](https://blog.csdn.net/liuchonge/article/details/67040089)
+
+[Text-CNN 文本分类: 超参数选择](https://blog.csdn.net/chuchus/article/details/77847476)
+
+[论文Convolutional Naural Networks for Sentence Classification--模型介绍篇](https://blog.csdn.net/liuchonge/article/details/60328365)
+
+[论文Convolutional Naural Networks for Sentence Classification--TensorFlow实现篇](https://blog.csdn.net/liuchonge/article/details/60333323)
 
 ### 2.3 14年文章A Convolutional Neural Network for Modelling Sentences
 
@@ -81,3 +93,5 @@ Max-pooling最为常见，最大池化是取整个区域的最大值作为特征
 ## 参考
 
 [从CNN视角看在自然语言处理上的应用](http://www.chuangyejia.vip/article/detail/209441.html) 
+
+[Understanding Convolutional Neural Networks for NLP](http://www.wildml.com/2015/11/understanding-convolutional-neural-networks-for-nlp/)
