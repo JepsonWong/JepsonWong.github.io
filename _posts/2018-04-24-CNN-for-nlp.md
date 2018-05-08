@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 利用CNN来进行文本分类，探索句子建模
+title: 利用CNN、RNN来进行文本分类，探索句子建模
 categories: [NLP, 深度学习]
-description: 介绍CNN在NLP中的一些应用
+description: 介绍CNN、RNN在NLP中的一些应用
 keywords: NLP, 深度学习, 文本分类
 ---
 
@@ -15,6 +15,12 @@ keywords: NLP, 深度学习, 文本分类
 在该模型中，**句子建模时输入是以句子的字符级别开始的**，之后随着卷积核所能覆盖的范围扩展，不断地去交互信息，同时还能够保证原始的输入信息不被丢失。
 
 [《Neural Machine Translation in Linear Time》阅读笔记](https://zhuanlan.zhihu.com/p/23795111)
+
+### 1.2 16年文章Character-level Convolutional Networks for Text Classification
+
+字符级CNN。没有做变长的convolutional处理。
+
+[字符级卷积神经网络（Char-CNN）实现文本分类--模型介绍与TensorFlow实现 6个卷积层+3个全连接层](http://www.h3399.cn/201704/78031.html)
 
 ## 2. 单词级模型
 
@@ -83,12 +89,23 @@ Max-pooling最为常见，最大池化是取整个区域的最大值作为特征
 
 [A convolutional Neural Network for Modelling Sentences](https://blog.csdn.net/alwaystry/article/details/53840736)
 
+### 2.4 16年北京工业大学专利一种基于卷积神经网络与随机森林的短文本分类方法
+
+[一种基于卷积神经网络与随机森林的短文本分类方法](https://patentimages.storage.googleapis.com/5b/5c/83/3222cd69226244/CN107066553A.pdf)
+
+[一种基于卷积神经网络与随机森林的短文本分类方法](https://patents.google.com/patent/CN107066553A/zh)
+
+输入层 + 卷积层 + 池化层 + 卷积层 + 随机森林层
+
 ## 3. 其他句子建模的创新
 
 ### 3.1 15年文章Dependency-based Convolutional Neural Networks for Sentence Embedding
 
 ### 3.2 14年文章Convolutional Neural Network Architectures for Matching Natural Language Sentences
 
+## github
+
+[Text Classification with CNN and RNN](https://github.com/gaussic/text-classification-cnn-rnn)
 
 ## 参考
 

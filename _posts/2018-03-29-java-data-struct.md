@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Java : Vector/ArrayList HashTable/HashMap ArrayList/LinkedList
+title: Java - Vector/ArrayList HashTable/HashMap ArrayList/LinkedList
 categories: [Java]
 description: 介绍一些Java的数据结构
 keywords: Java
