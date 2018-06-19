@@ -1,8 +1,8 @@
 ---
 layout: post
-title: RNN和BiRNN的API分析<针对Keras和Tensorflow>
+title: RNN和BiRNN的API分析
 categories: [深度学习, Tensorflow, Keras]
-description: 分析RNN和BiRNN的API分析<针对Keras和Tensorflow>
+description: 分析RNN和BiRNN的API分析(针对Keras和Tensorflow)
 keywords: 深度学习, Tensorflow, Keras
 ---
 
@@ -149,6 +149,8 @@ Backward direction的输入、输出翻转。
 
 ### tf.nn.bidirectional\_dynamic\_rnn
 
+[tf.nn.bidirectional\_dynamic\_rnn 官方api解释](https://www.tensorflow.org/api_docs/python/tf/nn/bidirectional_dynamic_rnn)
+
 ```
 bidirectional_dynamic_rnn函数：
 
@@ -172,6 +174,7 @@ output_fw, output_state_fw = dynamic_rnn(
           initial_state=initial_state_fw, dtype=dtype,
           parallel_iterations=parallel_iterations, swap_memory=swap_memory,
           time_major=time_major, scope=fw_scope)
+
 # Backward direction
 inputs_reverse = _reverse(
           inputs, seq_lengths=sequence_length,
