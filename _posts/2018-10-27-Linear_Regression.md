@@ -58,11 +58,13 @@ keywords: 机器学习
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\partial&space;L(W)}{W}&space;=&space;2X^TXW&space;-&space;2X^TY&space;W&space;=&space;(X^TX)^{-1}X^TY" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;L(W)}{W}&space;=&space;2X^TXW&space;-&space;2X^TY&space;W&space;=&space;(X^TX)^{-1}X^TY" title="\frac{\partial L(W)}{W} = 2X^TXW - 2X^TY W = (X^TX)^{-1}X^TY" /></a>
 
-以上的结果只能在<a href="https://www.codecogs.com/eqnedit.php?latex=X^TX" target="_blank"><img src="https://latex.codecogs.com/gif.latex?X^TX" title="X^TX" /></a>**能求逆矩阵**的情况下进行，如果不是满秩矩阵，不能求逆，我们采用梯度下降的方法更新参数。
+以上的结果只能在<a href="https://www.codecogs.com/eqnedit.php?latex=X^TX" target="_blank"><img src="https://latex.codecogs.com/gif.latex?X^TX" title="X^TX" /></a>**能求逆矩阵**的情况下进行，**如果不是满秩矩阵，不能求逆，我们采用梯度下降的方法更新参数**。
 
 #### 矩阵不满秩（梯度下降）
 
 梯度下降算法是一种求局部最优解的方法。对于某一个函数，某一点的梯度是其增长最快的方向，那么它的相反方向则是该点下降最快的方向。
+
+方法是首先随机初始化参数，然后沿着负梯度方向进行迭代，使得损失函数越来越小。
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\partial&space;J(W)}{\partial&space;W_j}&space;=&space;\frac{1}{2}\sum_{i=1}^{M}(h_W(x^i)&space;-&space;y^i)x_j^i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;J(W)}{\partial&space;W_j}&space;=&space;\frac{1}{2}\sum_{i=1}^{M}(h_W(x^i)&space;-&space;y^i)x_j^i" title="\frac{\partial J(W)}{\partial W_j} = \frac{1}{2}\sum_{i=1}^{M}(h_W(x^i) - y^i)x_j^i" /></a>
 
@@ -72,14 +74,73 @@ keywords: 机器学习
 
 ### 对梯度下降算法的改进
 
-批梯度下降
+批梯度下降：更新每一参数时都使用所有的样本来进行更新。它得到的是一个全局最优解，但是每迭代一步，都要用到训练集所有的数据。如果样本数目M很大，那么迭代速度会很慢。
 
-随机梯度下降
+随机梯度下降：通过每个样本来迭代更新一次。它伴随的一个问题是噪音较批梯度下降要多，它并不是每次迭代都向着整体最优化方向。
+
+小批量梯度下降：**建议使用的方法**。这种算法的训练过程比较快，而且也能保证最终参数训练的准确率。
+
+我们也可以使用**牛顿法**或者**拟牛顿法**进行求解。拟牛顿法是对二阶导数矩阵进行近似求解。
 
 ### 正则化
 
-L0正则化
+防止过拟合。L1的目的减少参数，L2的目的使得参数值变少。
 
-L1正则化
+L0正则化：模型参数中非零参数的个数。稀疏的参数可以防止过拟合。**但因为L0正则化很难求解，是个NP难问题，因此一般采用L1正则化**。L1正则化是L0正则化的最优凸近似，比L0容易求解，并且也可以实现稀疏的效果。
 
-L2正则化
+L1正则化：各个参数绝对值之和。**引入先验，假设参数服从拉普拉斯分布**。
+
+L2正则化：各个参数的平方的和的开方。**引入先验，假设参数服从正态分布**。
+
+### 多项式回归
+
+例如对于自变量的某个分量，增加二次方，就变成了多项式回归的模型，类似于特征组合、特征变换的效果。可以用来扩展特征，**避免欠拟合**。
+
+### 广义线性回归
+
+**多项式回归是对样本特征端做了推广，也可以对输出做推广**。比如我们的输出<a href="https://www.codecogs.com/eqnedit.php?latex=Y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Y" title="Y" /></a>不满足和<a href="https://www.codecogs.com/eqnedit.php?latex=X" target="_blank"><img src="https://latex.codecogs.com/gif.latex?X" title="X" /></a>的线性关系，但是<a href="https://www.codecogs.com/eqnedit.php?latex=lnY" target="_blank"><img src="https://latex.codecogs.com/gif.latex?lnY" title="lnY" /></a>和<a href="https://www.codecogs.com/eqnedit.php?latex=X" target="_blank"><img src="https://latex.codecogs.com/gif.latex?X" title="X" /></a>满足线性关系，模型函数如下
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=lnY&space;=&space;XW" target="_blank"><img src="https://latex.codecogs.com/gif.latex?lnY&space;=&space;XW" title="lnY = XW" /></a>
+
+对于每个样本的输出<a href="https://www.codecogs.com/eqnedit.php?latex=Y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Y" title="Y" /></a>，我们用<a href="https://www.codecogs.com/eqnedit.php?latex=lnY" target="_blank"><img src="https://latex.codecogs.com/gif.latex?lnY" title="lnY" /></a>去对应，从而**仍然可以用线性回归的算法去处理这个问题**。我们把<a href="https://www.codecogs.com/eqnedit.php?latex=lnY" target="_blank"><img src="https://latex.codecogs.com/gif.latex?lnY" title="lnY" /></a>一般化，假设这个函数是单调可微函数<a href="https://www.codecogs.com/eqnedit.php?latex=g(.)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?g(.)" title="g(.)" /></a>，则一般化的广义线性回归形式是
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=g(Y)&space;=&space;XW" target="_blank"><img src="https://latex.codecogs.com/gif.latex?g(Y)&space;=&space;XW" title="g(Y) = XW" /></a>
+
+函数<a href="https://www.codecogs.com/eqnedit.php?latex=g(Y)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?g(Y)" title="g(Y)" /></a>我们通常称为联系函数。
+
+## 线性回归的使用
+
+自变量：离散变量（对于有序的变量，转化为连续值；无序变量可以进行ont-hot处理）、连续变量（可以对连续变量进行适当处理，比如变为0均值归一化、min\_max归一化等）
+
+因变量：连续值。
+
+### 使用条件
+
+适用于回归预测问题。满足如下条件
+
+* 自变量与因变量是否呈**线性关系**。如果因变量Y与某个自变量Xi之间呈现出曲线趋势，可尝试通过变量变换予以修正。常用的变量变换方法有对数变换、倒数变换、平方根变换等。
+* 因变量是否符合正态分布。
+* 因变量数值之间是否独立。即自变量之间不存在多重共线问题。
+* 方差是否齐性。即残差的大小不随所有变量取值水平的改变而改变。
+
+[多重共线性问题的几种解决方法](https://blog.csdn.net/nieson2012/article/details/48980491)
+
+### 优缺点
+
+优点：模型比较简单；可解释性。
+
+缺点：对异常值敏感、容易过拟合、容易陷入局部最优。
+
+## 参考
+
+[机器学习-----线性回归浅谈（Linear Regression）](https://www.cnblogs.com/GuoJiaSheng/p/3928160.html)
+
+[岭回归直接得到最优解的公式推导](https://blog.csdn.net/lw_power/article/details/82953337)
+
+[线性回归推导](http://www.cnblogs.com/hearwind/p/9613297.html)
+
+[线性回归误差项分析](https://blog.csdn.net/qq_35028612/article/details/78632035)
+
+[线性回归原理和实现基本认识](https://blog.csdn.net/lisi1129/article/details/68925799)
+
+[线性回归原理小结](www.cnblogs.com/pinard/p/6004041.html)
