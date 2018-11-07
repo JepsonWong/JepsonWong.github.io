@@ -121,6 +121,8 @@ y\_t = \sigma(W\_o \cdot h\_t)
 
 ## 参考
 
+[Written Memories: Understanding, Deriving and Extending the LSTM](https://r2rt.com/written-memories-understanding-deriving-and-extending-the-lstm.html)
+
 [RNN](https://www.cnblogs.com/pinard/p/6509630.html)
 
 [RNN梯度下降](http://www.cnblogs.com/xweiblogs/p/5914622.html#undefined)

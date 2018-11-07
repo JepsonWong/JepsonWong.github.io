@@ -38,7 +38,7 @@ keywords: 机器学习
 
 何为最小二乘法，其实很简单。我们有很多的给定点，这时候我们需要找出一条线去拟合它，那么我先假设这个线的方程，然后把数据点代入假设的方程得到观测值，求使得实际值与观测值相减的平方和最小的参数。
 
-损失代价函数为
+损失函数为
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=J(W)&space;=&space;\frac{1}{2M}\sum_{i=1}^{M}(h_w(x^i)&space;-&space;y^i)^2&space;=&space;\frac{1}{2M}(XW&space;-&space;Y)^T(XW&space;-&space;Y)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?J(W)&space;=&space;\frac{1}{2M}\sum_{i=1}^{M}(h_w(x^i)&space;-&space;y^i)^2&space;=&space;\frac{1}{2M}(XW&space;-&space;Y)^T(XW&space;-&space;Y)" title="J(W) = \frac{1}{2M}\sum_{i=1}^{M}(h_w(x^i) - y^i)^2 = \frac{1}{2M}(XW - Y)^T(XW - Y)" /></a>
 
