@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 实体嵌入(Entity Embedding)
-categories: [cate1, cate2]
+categories: [NLP]
 description: some word here
-keywords: keyword1, keyword2
+keywords: NLP, 实体嵌入
 ---
 
 ## 背景
