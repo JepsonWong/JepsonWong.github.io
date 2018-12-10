@@ -82,6 +82,10 @@ keywords: 机器学习
 
 我们也可以使用**牛顿法**或者**拟牛顿法**进行求解。拟牛顿法是对二阶导数矩阵进行近似求解。
 
+本博客其他文章总结了一些优化算法，地址如下：
+
+[优化算法](https://jepsonwong.github.io/2018/06/18/%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/)
+
 ### 正则化
 
 防止过拟合。L1的目的减少参数，L2的目的使得参数值变少。
@@ -130,6 +134,22 @@ L2正则化：各个参数的平方的和的开方。**引入先验，假设参�
 优点：模型比较简单；可解释性。
 
 缺点：对异常值敏感、容易过拟合、容易陷入局部最优。
+
+### sklearn库
+
+```
+不带正则：
+from sklearn.linear_model import LinearRegression
+linear = LinearRegression()
+linear.fit(X, y) fit函数，拟合线性模型。其中X，y分别为训练数据的特征和标签。
+linear.predict(X) predict函数，用线性模型来进行预测。
+
+L1正则：
+from sklearn.linear_model import Lasso
+
+L2正则：
+from sklearn.linear_model import Ridge
+```
 
 ## 参考
 
