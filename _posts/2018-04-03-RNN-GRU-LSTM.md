@@ -134,3 +134,7 @@ y\_t = \sigma(W\_o \cdot h\_t)
 [LSTM](https://zybuluo.com/hanbingtao/note/581764)
 
 [LSTM超参数训练trick](https://www.jianshu.com/p/dcec3f07d3b5)
+
+[LSTM后向传播](https://blog.csdn.net/mmc2015/article/details/73251805)
+
+[LSTM后向传播](http://vsooda.github.io/2015/08/24/lstm-derivation/)
