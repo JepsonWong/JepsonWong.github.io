@@ -1,6 +1,6 @@
 ---
 layout: post
-title: RNN GRU LSTM
+title: RNN GRU LSTM GCNN
 categories: [深度学习, NLP]
 description: 介绍在NLP中广泛使用的一些神经网络。
 keywords: NLP, 神经网络, 机器学习
@@ -118,6 +118,40 @@ z\_t=\sigma(W\_z\cdot[h\_{t-1},x\_t])
 h\_t=(1-z\_t)\ast h\_{t-1}+z\_t \ast \tilde{h}\_t
 
 y\_t = \sigma(W\_o \cdot h\_t)
+
+## GCNN
+
+[《Language Modeling with Gated Convolutional Networks》阅读笔记](https://zhuanlan.zhihu.com/p/24780258)
+
+目前语言模型主要基于RNN，文章提出了一个新颖的语言模型，**仿照LSTM中的门限机制，利用多层的CNN结构，每层CNN都加上一个输出门限**。文中提出的GLU模型在两个常用数据集上的测试效果超过了目前循环模型，并且速度更快。
+
+文中具体提出了GTU和GLU两种模型，两个模型整体类似，**主要是激活函数不一样**。GLU的激活函数是线性的；GTU的激活函数是tanh，是非线性的。作者从梯度的角度分析了GLU比GTU更优。
+
+这篇文章提出了**基于卷积神经网络和门限机制**的深度学习模型，将其运用到语言模型中，取得了比循环神经网络模型好的效果，同时由于**卷积神经网络局部性的特点**使得其可以在词序列中中进行**并行训练**，**提高了处理的速度**，同时**引人门限机制，减缓梯度消失**，**加快了模型的收敛速度**。通过**叠加多层**来学习词序列的前后依赖关系，使得其在长文本WikiText-103语言模型的学习中也取得不错的效果。
+
+## Tree-LSTM
+
+[哈工大车万翔：自然语言处理中的深度学习模型是否依赖于树结构?](http://www.cbdio.com/BigData/2015-10/15/content_3972817.htm)
+
+[在NLP中深度学习模型何时需要树形结构？](http://www.sohu.com/a/226728145_642762)
+
+本文作者总结出下面的结论。
+
+需要树形结构：
+
+* 需要长距离的语义依存信息的任务（例如上面的语义关系分类任务）Semantic relation extraction。
+* 输入为长序列，即复杂任务，且在片段有足够的标注信息的任务（例如句子级别的Stanford情感树库分类任务），此外，实验中作者还将这个任务先通过标点符号进行了切分，每个子片段使用一个双向的序列模型，然后总的再使用一个单向的序列模型得到的结果比树形结构的效果更好一些。
+
+不需要树形结构：
+
+* 长序列并且没有足够的片段标注任务（例如上面的二元情感分类，Q-A Matching任务）。
+* 简单任务（例如短语级别的情感分类和Discourse分析任务），每个输入片段都很短，句法分析可能没有改变输入的顺序。
+
+[LSTM(Long Short Term Memory)和RNN(Recurrent)教程收集](https://blog.csdn.net/omnispace/article/details/78039529)
+
+[《Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks》阅读笔记](https://zhuanlan.zhihu.com/p/26261371)
+
+输入门、遗忘门、输出门的参数都是共享的。
 
 ## 参考
 
