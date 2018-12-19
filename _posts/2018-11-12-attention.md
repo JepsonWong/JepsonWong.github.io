@@ -44,7 +44,7 @@ Multi-Head Attention的定义：
 
 [tf实现](https://github.com/tobyyouup/conv_seq2seq)
 
-[pytorch实现](https://github.com/pengshuang/CNN_Seq2Seq)
+[代码存疑，可能有问题 pytorch实现](https://github.com/pengshuang/CNN_Seq2Seq)
 
 [从《Convolutional Sequence to Sequence Learning》到《Attention Is All You Need》](https://zhuanlan.zhihu.com/p/27464080)
 
