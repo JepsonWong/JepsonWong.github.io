@@ -40,7 +40,35 @@ Multi-Head Attention的定义：
 
 ## Multi-step Attention(参考5)
 
-在每一个卷积层都会进行 attention 的操作，得到的结果输入到下一层卷积层，这就是多跳注意机制multi-hop attention。这样做的好处是使得模型在得到下一个主意时，能够考虑到之前的已经注意过的词。
+在每一个卷积层都会进行 attention 的操作，得到的结果输入到下一层卷积层，这就是多跳注意机制multi-hop attention。这样做的好处是**使得模型在得到下一个注意时，能够考虑到之前的已经注意过的词**。
+
+[tf实现](https://github.com/tobyyouup/conv_seq2seq)
+
+[pytorch实现](https://github.com/pengshuang/CNN_Seq2Seq)
+
+[从《Convolutional Sequence to Sequence Learning》到《Attention Is All You Need》](https://zhuanlan.zhihu.com/p/27464080)
+
+[Convolutional Sequence to Sequence Learning 阅读和实现](https://zhuanlan.zhihu.com/p/51952607)
+
+[《Convolutional Sequence to Sequence Learning》阅读笔记](https://zhuanlan.zhihu.com/p/26918935)
+
+### Convolutional Block Structure
+
+encoder和decoder都是由l层卷积层构成。“卷积计算+非线性计算”看作一个单元Convolutional Block，这个单元在不同block structure中是共享的（也就是说l层卷积共享参数）。卷积计算和非线性计算，会有一个残差连接。
+
+非线性计算部分：输入拆分成两个大小相同的矩阵，然后一个矩阵不变，另一个矩阵作为门控，控制着网络中的信息流，即哪些能够传递到下一个神经元中。
+
+### Multi-step Attention
+
+解码器的每一层都使用了attention机制，所以叫multi-step attention。
+
+attention的权重由decoder的当前输出hi和encoder的最后一层输出来决定，利用得到的权重对encoder的最后一层输出进行加权，得到表示输入句子信息的向量ci。
+
+解码器看源码感觉是：**每个层的卷积层参数共享；输入通过卷积层得到输出，再经过非线性计算得到hi，然后经过attention得到ci，再把ci和hi加起来，作为下一层输入**。
+
+## attention用于生成图片的描述(参考6)
+
+attention有很多是在机器翻译领域的应用，但attention机制同样也能应用于递归模型。在Show，Attend and Tell一文中，作者**将attention机制应用于生成图片的描述**。他们用卷积神经网络来“编码”图片，并用一个递归神经网络模型和attention机制来生成描述。通过对attention权重值的可视化（就如之前机器翻译的例子一样），在生成词语的同时我们能解释模型正在关注哪个部分。
 
 ## 参考
 
@@ -53,6 +81,8 @@ Multi-Head Attention的定义：
 [4 《Attention is All You Need》浅读（简介+代码）(文章开源代码不错)](https://kexue.fm/archives/4765#Multi-Head%20Attention)
 
 [5 《Convolutional Sequence to Sequence Learning》阅读笔记](https://zhuanlan.zhihu.com/p/26918935)
+
+[6 深度学习方法（九）：自然语言处理中的Attention Model注意力模型](https://blog.csdn.net/xbinworld/article/details/54607525)
 
 [从《Convolutional Sequence to Sequence Learning》到《Attention Is All You Need》](https://zhuanlan.zhihu.com/p/27464080)
 
