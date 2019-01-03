@@ -1,9 +1,9 @@
 ---
 layout: post
 title: RNN和BiRNN的API分析
-categories: [深度学习, Tensorflow, Keras]
+categories: [深度学习, TensorFlow, Keras]
 description: 分析RNN和BiRNN的API分析(针对Keras和Tensorflow)
-keywords: 深度学习, Tensorflow, Keras
+keywords: 深度学习, TensorFlow, Keras
 ---
 
 ## Keras
