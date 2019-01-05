@@ -16,6 +16,8 @@ keywords: TensorFlow, Google Colab, TensorFlow Hub
 
 [Google Colab——用谷歌免费GPU跑你的深度学习代码](https://www.jianshu.com/p/000d2a9d36a0)
 
+[Google Colab Free GPU Tutorial](https://medium.com/deep-learning-turkey/google-colab-free-gpu-tutorial-e113627b9f5d)
+
 ## TensorFlow Hub
 
 [TENSORFLOW HUB 简介](http://www.rethink.fun/index.php/2018/06/12/tfhub/)
