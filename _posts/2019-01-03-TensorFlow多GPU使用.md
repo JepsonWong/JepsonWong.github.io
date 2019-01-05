@@ -12,6 +12,8 @@ TensorFlow使用GPU时默认占满所有可用GPU的显存，但只在第一个G
 
 ## 简单的解决方案
 
+[multigpu\_cnn\.ipynb（讲的很好）](https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/6_MultiGPU/multigpu_cnn.ipynb)
+
 一种经常提及的方法是**设置可见的GPU**，方法是通过设置CUDA\_VISIBLE\_DEVICES来完成，如果在shell中运行，每次运行某个shell脚本之前，加上exportCUDA\_VISIBLE\_DEVICES=0或者是你期望运行的GPU id（0到n-1，其中n是机器上GPU卡的数量），如果是在python脚本，还可以在所有代码之前加入如下代码：
 
 ```
