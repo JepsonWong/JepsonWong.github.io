@@ -8,7 +8,7 @@ keywords: NLP, 神经网络, 机器学习
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
-## RNN
+# RNN（Simple RNN/Vanilla RNN）
 
 ### 为什么要有RNN?
 
@@ -56,6 +56,8 @@ RNN反向传播算法的思路和DNN是一样的，即通过梯度下降法一�
 但由于我们是基于时间反向传播，所以RNN的反向传播有时也叫做BPTT(back-propagation through time)。
 
 重点是这里的BPTT和DNN也有很大的不同点，即**这里所有的U,W,V,b,c在序列的各个位置是共享的，反向传播时我们更新的是相同的参数**。
+
+# 门机制
 
 ## LSTM
 
@@ -153,7 +155,178 @@ y\_t = \sigma(W\_o \cdot h\_t)
 
 输入门、遗忘门、输出门的参数都是共享的。
 
-## 参考
+## LSTM变体：peephole connection
+
+[从信息隐匿的角度谈 LSTM：从 Stack 到 Nest](https://zhuanlan.zhihu.com/p/34500721)
+
+## GridLSTM
+
+https://arxiv.org/abs/1507.01526
+
+## Stacked LSTM
+
+[从信息隐匿的角度谈 LSTM：从 Stack 到 Nest](https://zhuanlan.zhihu.com/p/34500721)
+
+## Nested LSTM
+
+[从信息隐匿的角度谈 LSTM：从 Stack 到 Nest](https://zhuanlan.zhihu.com/p/34500721)
+
+## Minimal Gated Unit 2016
+
+https://arxiv.org/abs/1603.09420
+
+## RAN 2017
+
+这篇文章简化了一下LSTM，扔掉了输出门，**每一步的candidate cell state只考虑当前步的输入而不管历史信息**。最后发现效果跟原来的LSTM差不多，**参数却少了很多**。于是**认为非线性不那么重要，门机制才重要**。
+
+这篇论文还把GRU表示成了一种奇怪的、类似于LSTM的形式，有利于比较LSTM和GRU的异同，并且认为**RAN同时是LSTM和GRU的简化版**。
+
+## SRU(Simple Recurrent Unit 2017)（重要）
+
+[从 RNN, LSTM, GRU 到 SRU](https://mp.weixin.qq.com/s/WSNb7VLdQQHBmRipuFEZOA?)
+
+[从 RNN, LSTM, GRU 到 SRU](https://zhuanlan.zhihu.com/p/29425419)
+
+[神经网络SRU](https://cloud.tencent.com/developer/article/1089013)
+
+[爆款论文提出简单循环单元SRU：像CNN一样快速训练RNN（附开源代码）](https://juejin.im/post/59b776475188257e8f037558)
+
+[SRU模型在文本分类中的应用](https://www.jianshu.com/p/7443ddc19ec9)
+
+[如何评价新提出的RNN变种SRU? 里面也有和QRNN的对比](https://www.zhihu.com/question/65244705)
+
+[干货 | 解读加实战：爆款论文 SRU 在对话生成上的效果](https://mp.weixin.qq.com/s/i-EWyn208OQRBvZz2aIu5g)
+
+[从SRU小小的学术争议，可以学到什么？关于SRU简单循环单元，David 9 有几点想说](http://nooverfit.com/wp/%E4%BB%8Esru%E5%B0%8F%E5%B0%8F%E7%9A%84%E5%AD%A6%E6%9C%AF%E4%BA%89%E8%AE%AE%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%AD%A6%E5%88%B0%E4%BB%80%E4%B9%88%EF%BC%9F%E5%85%B3%E4%BA%8Esru%E7%AE%80%E5%8D%95%E5%BE%AA/)
+
+[Simple Recurrent Unit For Sentence Classification ](https://www.sohu.com/a/207545310_657157)
+
+[论文](https://arxiv.org/abs/1709.02755)
+
+## QRNN/Quasi-RNN 2016 （重要）
+
+https://arxiv.org/abs/1611.01576
+
+QRNN在公司业务中效果很好
+
+## SRNN
+
+[比RNN快136倍！上交大提出SRNN，现在RNN也能做并行计算了](https://baijiahao.baidu.com/s?id=1608926345631428553&wfr=spider&for=pc)
+
+## Skim-RNN
+
+[《Neural Speed Reading via Skim-RNN》阅读笔记](https://zhuanlan.zhihu.com/p/32812008)
+
+## persistent RNN（baidu出品，重要）
+
+## RevRnn
+
+[将RNN内存占用缩小90%：多伦多大学提出可逆循环神经网络](https://zhuanlan.zhihu.com/p/48428618)
+
+## ConvLSTM: CNN和RNN的结合（重要）
+
+引入卷积运算的RNN，架构总体上还是RNN。
+
+## TrellisNet（重要）
+
+[CNN和RNN混血儿：序列建模新架构TrellisNet](https://zhuanlan.zhihu.com/p/47339572)
+
+本文提出了一种新颖的架构——**网格网络（TrellisNet）**。网格网络的结构融合了CNN和RNN，因此可以直接吸收许多为CNN和RNN设计的技术，从而在多项序列建模问题上战胜了当前最先进的CNN、RNN、自注意力模型。
+
+ConvLSTM更多的是引入卷积运算的RNN，架构总体上还是RNN。TrellisNet中，CNN、RNN的联系深入到架构层面。
+
+TrellisNet拥有着RNN和CNN的优点，也可以用双方的现有技巧来弥补两个模型各自的缺点；因此RNN和CNN有比大多数人认为的更紧密的关联。
+
+## 解释
+
+### 特点
+
+这类RNN Cell大家应该很熟悉了，其主要特点是**用门控制信息流动，隐层状态采用加性更新，不做非线性变换**。
+
+[Written Memories: Understanding, Deriving and Extending the LSTM](https://r2rt.com/written-memories-understanding-deriving-and-extending-the-lstm.html)
+
+### 设计初衷
+
+上述文章讲了LSTM设计的初衷和原则、然后根据这些原则推导出了GRU的设计。但上述文章认为认为LSTM里的读写顺序和状态分裂为(c, h)等设计很奇怪（文中叫 LSTM hiccup）。下面文章解释和完善了这种设计。
+
+[从信息隐匿的角度谈 LSTM：从 Stack 到 Nest](https://zhuanlan.zhihu.com/p/34500721)
+
+### 效果
+
+理论上，各个门的值应该在\[0, 1\]之间。但是如果你真正训过一些表现良好的网络并且查看过门的值，就会发现很多时候门的值都是非常接近0或者1的，而类似于0.2/0.5这样的中间值很少。从直觉上我们希望门是二元的，控制信息流动的通和断，事实上训练良好的门也确实能达到这种效果。
+
+加入门机制可以解决普通 RNN 的梯度消失的问题。
+
+更重要的是，**门可以控制信息变形（information morphing）和选择性（selectivity）**。
+
+* 选择性体现在，想让信息流动的时候的就让它流动，不想让它流动的时候就关掉。
+* 信息变形体现在，模型状态在跨时间步时不存在非线性变换，而是加性的。
+
+# 跨尺度连接
+
+## CW-RNN: Clockwise RNN
+
+普通RNN都是隐层从前一个时间步连接到当前时间步。而CW-RNN**把隐层分成很多组，每组有不同的循环周期**，有的周期是1（和普通RNN一样），有的周期更长（例如从前两个时间步连接到当前时间步，不同周期的cell之间也有一些连接。这样一来，**距离较远的某个依赖关系就可以通过周期较长的cell少数几次循环访问到**，从而网络层数不太深，更容易学到。
+
+## Dilated RNN
+
+和CW-RNN类似，只是**CW-RNN是在同一个隐层内部分组**，**Dilated RNN是在不同的层分组**：最下面的隐层每个时间步都循环，较高的隐层循环周期更长些，从而有效感受野更大。
+
+## NARX RNN: Nonlinear Auto-Regressive eXogenous RNN
+
+类此以上两种方法，但前面的方法是把隐层单元分组，有的单元单步循环，有的多步循环；而这种方法是让每个隐层单元都在不同尺度上循环，例如某个隐层状态直接依赖于它的前一个、前两个、直到前 n-1 个隐层状态
+
+如果说普通的 RNN 是一阶递推式，这种就是 n 阶递推式
+
+## TKRNN: Temporal Kernel RNN
+
+类似 NARX RNN，只是把 n 阶递推式写成了特殊的、便于参数共享的形式，从而计算起来更快。
+
+## 解释
+
+**既然学习长期依赖很难，那就手动把依赖的步数缩短，然后学习短期依赖就可以了**。思想有点儿类似于 ResNet 中的 skip-connection（但是跨越多个时间步的连接用的不是单位阵，而是需要学习的稠密矩阵），使得模型输出层可以看到之前不同时间步的信息，进而达到类似模型集成的效果。
+
+# 特殊初始化（及其维持）
+
+[RNN 中学习长期依赖的三种机制](https://zhuanlan.zhihu.com/p/34490114)
+
+## IRNN: Identity Recurrent Neural Networks
+
+## np-RNN: normalized-positive definite RNN
+
+## RIN: Recurrent Identity Network
+
+## Unitary-RNN
+
+## IndRNN
+
+## singular value clipping
+
+## SCRNN：Structurally Constrained Recurrent Neural Network
+
+## 解释
+
+特殊初始化（及其维持）大致有三种方法：（近似）恒等映射、正交化、参数范围控制。
+
+# 其他
+
+[RNN 中学习长期依赖的三种机制](https://zhuanlan.zhihu.com/p/34490114)
+
+## Statistical Recurrent Unit
+
+## Fourier Recurrent Unit
+
+# 论文
+
+## An Empirical Exploration of Recurrent Network Architectures
+
+通过实验的方法证实，output gate 一般用处不大："We discovered that the input gate is important, that the output gate is unimportant, and that the forget gate is extremely significant on all problems except language modelling"。
+
+# 参考
+
+[（没看）从信息隐匿的角度谈 LSTM：从 Stack 到 Nest](https://zhuanlan.zhihu.com/p/34500721)
+
+[（好文）RNN 中学习长期依赖的三种机制](https://zhuanlan.zhihu.com/p/34490114)
 
 [Written Memories: Understanding, Deriving and Extending the LSTM](https://r2rt.com/written-memories-understanding-deriving-and-extending-the-lstm.html)
 
