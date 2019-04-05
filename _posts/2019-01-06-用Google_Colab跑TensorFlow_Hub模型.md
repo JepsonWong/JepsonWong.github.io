@@ -26,4 +26,8 @@ keywords: TensorFlow, Google Colab, TensorFlow Hub
 
 [retrain\.py](https://github.com/tensorflow/hub/blob/master/examples/image_retraining/retrain.py)
 
+## 用Colab训练Keras模型
+
+[用免费TPU训练Keras模型，速度还能提高20倍！](https://zhuanlan.zhihu.com/p/61503222)
+
 ## 参考
