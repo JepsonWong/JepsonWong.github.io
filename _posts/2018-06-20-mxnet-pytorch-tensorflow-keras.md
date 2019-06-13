@@ -451,3 +451,13 @@ batch_dot和matmul差不多。K\.dot会沿着两个矩阵最后两个维度进�
 
 tf\.multiply: 矩阵x和矩阵y对应位置的元素相乘。
 
+## 矩阵操作
+
+pytorch: torch\.cat、torch\.stack、torch\.transpose、permute、squeeze、unsqueeze
+
+[pytorch中的cat、stack、tranpose、permute、unsqeeze](https://www.cnblogs.com/yifdu25/p/9399047.html)
+
+tensorflow: concat、stack、unstack
+
+[tensorflow随笔——concat(), stack(), unstack()](https://blog.csdn.net/neil3611244/article/details/81487596)
+
