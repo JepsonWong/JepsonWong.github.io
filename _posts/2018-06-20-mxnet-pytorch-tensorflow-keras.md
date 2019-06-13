@@ -403,3 +403,51 @@ model\.parameters()输出网络所有的Parameter（有值和require\_grad属性
 
 [keras输出中间层结果的2种方法](https://blog.csdn.net/hahajinbu/article/details/77982721)
 
+pytorch:
+
+[Extracting and using features from a pretrained model](https://discuss.pytorch.org/t/extracting-and-using-features-from-a-pretrained-model/20723)
+
+[How to extract features of an image from a trained model](https://discuss.pytorch.org/t/how-to-extract-features-of-an-image-from-a-trained-model/119/3)
+
+## reshape
+
+keras: layers\.Reshape
+
+tensorflow: tf\.reshape
+
+tf\.reshape和keras\.layers\.Reshape不一样，**tf针对所有的维度进行reshape，keras只针对0维以外的进行reshape**。
+
+[keras.layers.Reshape和tf.reshape比较](https://blog.csdn.net/weixin_43331915/article/details/83305263)
+
+## 输入
+
+keras: keras\.layers\.Input 例如keras\.layers\.Input(shape=(None, None, None, 36))表示五个维度
+
+tensorflow: tf.placeholder 例如tf\.placeholder(tf\.int32, \[None, 36\])表示两个纬度
+
+## 矩阵乘法
+
+keras: tf\.keras\.backend\.batch\_dot: 批量化的点积。K\.dot
+
+[参考1](https://www.w3cschool.cn/tensorflow_python/tf_keras_backend_batch_dot.html)
+
+[参考2](https://blog.csdn.net/weixin_34389926/article/details/88261323)
+
+tensorflow: tf\.matmul、tf\.batch_matmul、tf\.multiply
+
+batch_dot和matmul差不多。K\.dot会沿着两个矩阵最后两个维度进行乘法，不是element-wise矩阵乘法。
+
+[理解keras中的batch_dot，dot方法和TensorFlow的matmul](https://blog.csdn.net/huml126/article/details/88739846)
+
+新版的tensorflow已经移除batch\_matmul，使用时换为matmul就可以了。
+
+[TensorFlow中的tf.batch_matmul()](https://blog.csdn.net/yyhhlancelot/article/details/81191923)
+
+[TensorFlow中如何实现batch_matmul](https://www.jianshu.com/p/afe96784cbbf)
+
+**重点**：感觉batch\_dot只能计算只能涉及最后两个维度。
+
+[Understanding batch_dot() in Keras with Tensorflow backend](https://stackoverflow.com/questions/54057742/understanding-batch-dot-in-keras-with-tensorflow-backend)
+
+tf\.multiply: 矩阵x和矩阵y对应位置的元素相乘。
+
