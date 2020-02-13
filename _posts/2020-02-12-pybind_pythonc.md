@@ -22,6 +22,8 @@ C++不一定比Python运行快，在“起跑”阶段，C++甚至比Python要�
 
 ## GIL的获取和释放
 
+当Python端调用C++端的代码时，如果不在C++端主动释放GIL锁，该线程会一直hold GIL锁。
+
 * Pybind用法：py::gil_scoped_release：释放GIL锁；py::gil_scoped_acquire：获取GIL锁
 * Python C用法：可以使用Py_BEGIN_ALLOW_THREADS和Py_END_ALLOW_THREADS这一对宏来**释放GIL** [Py_BEGIN_ALLOW_THREADS / Py_END_ALLOW_THREADS](https://docs.python.org/3/c-api/init.html#c.Py_BEGIN_ALLOW_THREADS) ；使用gstate = PyGILState_Ensure()和PyGILState_Release(gstate)来**获取GIL**。
 
@@ -35,7 +37,7 @@ C++不一定比Python运行快，在“起跑”阶段，C++甚至比Python要�
 
 [参考](https://pybind11.readthedocs.io/en/stable/advanced/pycpp/object.html)
 
-py::cast（返回转换后的py::object对象，是右值）、obj.cast
+py::cast（返回转换后的py::object对象，**是右值，不能对其做取地址操作**）、obj.cast
 
 Python types 包括handle, object, bool\_, int\_, float\_, str, bytes, tuple, list, dict, slice, none, capsule, iterable, iterator, function, buffer, array, and array_t.
 * handle: Holds a reference to a Python object (no reference counting)
